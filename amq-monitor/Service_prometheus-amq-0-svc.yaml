@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-amq-0-svc
+  labels:
+    app: prometheus
+    prometheus: amq
+spec:
+  selector:
+    statefulset.kubernetes.io/pod-name: prometheus-amq-0
+  ports:
+    - name: web
+      protocol: TCP
+      port: 9090
+      targetPort: web

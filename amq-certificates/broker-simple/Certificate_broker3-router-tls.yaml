@@ -1,0 +1,22 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: broker-simple-router-tls
+spec:
+  secretName: broker-simple-router-tls
+  issuerRef:
+    name: ca-issuer
+  commonName: broker-a-hdls-svc
+  usages:
+    - server auth
+  dnsNames:
+  - broker-a-hdls-svc 
+  - broker-a-hdls-svc.amq-broker-simple.svc
+  - broker-a-hdls-svc.amq-broker-simple.svc.cluster.local
+  keyEncoding: pkcs8
+  keystores:
+    jks:
+      create: true
+      passwordSecretRef:
+        name: broker-simple-router-tls
+        key: keyStorePassword

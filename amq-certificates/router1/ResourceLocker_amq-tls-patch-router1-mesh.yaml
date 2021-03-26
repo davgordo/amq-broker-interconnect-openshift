@@ -1,0 +1,25 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: ResourceLocker
+metadata:
+  name: amq-tls-patch-router1-mesh
+spec:
+  serviceAccountRef:
+    name: default
+  patches:
+  - id: amq-tls-patch-router1-mesh
+    targetObjectRef:
+      apiVersion: v1
+      kind: Secret
+      name: router-a-mesh-tls
+      namespace: amq-router1
+    patchTemplate: |
+      data:
+        ca.crt: {{ (index (index . 0).data "ca.crt") }}
+        tls.crt: {{ (index (index . 0).data "tls.crt") }}
+        tls.key: {{ (index (index . 0).data "tls.key") }}
+    patchType: application/strategic-merge-patch+json
+    sourceObjectRefs:
+    - apiVersion: v1
+      kind: Secret
+      name: router1-mesh-tls
+      namespace: amq-certificates

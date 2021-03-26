@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-amq-monitor
+spec:
+  endpoints:
+    - interval: 30s
+      port: console-jolokia
+      scheme: http
+  namespaceSelector:
+    matchNames:
+      - amq-broker-simple
+  selector:
+    matchLabels:
+      application: broker-a-app

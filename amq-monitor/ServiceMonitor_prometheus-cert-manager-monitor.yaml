@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-cert-manager-monitor
+spec:
+  endpoints:
+    - interval: 5s
+      port: http
+      scheme: http
+  namespaceSelector:
+    matchNames:
+      - amq-certificates
+  selector:
+    matchLabels:
+      app: cert-manager

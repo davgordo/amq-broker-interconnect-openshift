@@ -1,0 +1,57 @@
+apiVersion: interconnectedcloud.github.io/v1alpha1
+kind: Interconnect
+metadata:
+  name: router-a
+spec:
+  deploymentPlan:
+    placement: Any
+    role: interior
+    size: 1
+  edgeListeners:
+    - port: 45672
+  interRouterListeners:
+    - authenticatePeer: true
+      expose: true
+      port: 55671
+      saslMechanisms: EXTERNAL
+      sslProfile: mesh-tls
+  listeners:
+    - port: 9672
+      authenticatePeer: true
+      expose: true
+      http: true
+    - port: 5672
+      sslProfile: client-tls
+      authenticatePeer: true
+      saslMechanisms: PLAIN
+      expose: true
+  connectors:
+    - host: broker-a-hdls-svc.amq-broker-simple.svc.cluster.local
+      name: broker-simple
+      port: 5672
+      routeContainer: true
+      sslProfile: broker-tls
+  sslProfiles:
+    - name: client-tls
+      caCert: router-a-client-tls
+      generateCredentials: false
+    - name: mesh-tls
+      caCert: router-a-mesh-tls
+      credentials: router-a-mesh-tls
+      mutualAuth: true
+      generateCredentials: false
+    - name: broker-tls
+      caCert: router-a-broker-tls
+      generateCredentials: false
+  users: router-a-users
+  linkRoutes:
+    - connection: broker-simple
+      direction: in
+      prefix: broker-simple.
+    - connection: broker-simple
+      direction: out
+      prefix: broker-simple.
+      prefix: $coordinator
+    - connection: broker-a
+      direction: out
+      prefix: $coordinator

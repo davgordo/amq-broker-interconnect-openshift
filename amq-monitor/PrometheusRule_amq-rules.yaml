@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: amq
+    role: prometheus-rulefiles
+  name: amq-rules
+spec:
+  groups:
+    - name: amq rules
+      rules:
+        - alert: amq_fillup_warning
+          annotations:
+            description: |-
+              AMQ queue is filling up (> 4 msgs)
+                VALUE = {{ $value }}
+                LABELS: {{ $labels }}
+            summary: 'AMQ queue filling up (pod {{ $labels.pod }} instance {{ $labels.instance }}, queue {{ $labels.queue }}) '
+          expr: 'avg_over_time(artemis_message_count{}[1m]) > 3'
+          for: 2m
+          labels:
+            severity: critical
+    - name: jvm rules
+      rules:
+        - alert: jvm_heap_warning
+          expr: sum(avg_over_time(jvm_memory_used_bytes{area="heap"}[1m]))by(application,instance)*100/sum(avg_over_time(jvm_memory_max_bytes{area="heap"}[1m]))by(application,instance) >= 80
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: "JVM heap warning"
+            description: "JVM heap of instance `{{$labels.instance}}` from application `{{$labels.application}}` is above 80% for one minute. (current=`{{$value}}%`)"
+

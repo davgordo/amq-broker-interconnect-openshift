@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: amq
+  labels:
+    prometheus: amq
+spec:
+  #externalUrl: http://prometheus-amq-0-nmr-passenger-counts.apps.mta-dev-test.p8s0.p1.openshiftapps.com
+  alerting:
+    alertmanagers:
+      - name: alertmanager-operated
+        namespace: amq-monitor
+        port: web
+  replicas: 1
+  ruleSelector:
+    matchLabels:
+      role: prometheus-rulefiles
+      prometheus: amq
+  securityContext: {}
+  serviceAccountName: prometheus-k8s
+  serviceMonitorSelector: {}
+  storage:
+    volumeClaimTemplate:
+      metadata: {}
+      spec:
+        resources:
+          requests:
+            storage: 1Gi
