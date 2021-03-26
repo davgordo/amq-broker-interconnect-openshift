@@ -1,7 +1,7 @@
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
-  name: amq-router1
+  name: amq-router
 spec:
   targetNamespaces:
-  - amq-router1
+  - amq-router

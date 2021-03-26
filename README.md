@@ -10,7 +10,6 @@ In Operators|operatorHub, install 'Resource Locker Operator'. Resource Locker in
 
 ## Provision AMQ Certificate Management
 
-Create Certificates
 ```
 oc new-project amq-certificates
 oc apply -f amq-certificates/ -n amq-certificates
@@ -30,12 +29,12 @@ oc apply -f amq-broker-simple/customization/ -n amq-broker-simple
 
 ## Provision Routers
 
-This example uses `amq-router1` configuration.
+This example uses `amq-router` configuration.
 
 ```
-oc new-project amq-router1
-oc apply -f amq-router1/ -n amq-router1
-oc apply -f amq-certificates/router1/ -n amq-certificates
+oc new-project amq-router
+oc apply -f amq-router/ -n amq-router
+oc apply -f amq-certificates/router/ -n amq-certificates
 ```
 
 ## Provision Monitoring Components

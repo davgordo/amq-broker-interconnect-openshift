@@ -1,22 +1,22 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: router1-client-tls
+  name: router-client-tls
 spec:
-  secretName: router1-client-tls
+  secretName: router-client-tls
   issuerRef:
     name: ca-issuer
-  commonName: router1-client-tls
+  commonName: router-client-tls
   usages:
     - server auth
   dnsNames:
   - router-a
-  - router-a.amq-router1.svc
-  - router-a.amq-router1.svc.cluster.local
+  - router-a.amq-router.svc
+  - router-a.amq-router.svc.cluster.local
   keyEncoding: pkcs8
   keystores:
     jks:
       create: true
       passwordSecretRef:
-        name: router1-client-tls
+        name: router-client-tls
         key: keyStorePassword

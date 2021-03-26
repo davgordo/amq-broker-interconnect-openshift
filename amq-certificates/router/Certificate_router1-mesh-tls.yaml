@@ -1,9 +1,9 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: router1-mesh-tls
+  name: router-mesh-tls
 spec:
-  secretName: router1-mesh-tls
+  secretName: router-mesh-tls
   issuerRef:
     name: ca-issuer
   commonName: router-a
@@ -12,5 +12,5 @@ spec:
     - client auth
   dnsNames:
   - router-a
-  - router-a.amq-router1.svc
-  - router-a.amq-router1.svc.cluster.local
+  - router-a.amq-router.svc
+  - router-a.amq-router.svc.cluster.local
