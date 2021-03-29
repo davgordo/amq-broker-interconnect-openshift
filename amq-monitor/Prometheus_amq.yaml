@@ -5,7 +5,6 @@ metadata:
   labels:
     prometheus: amq
 spec:
-  #externalUrl: http://prometheus-amq-0-nmr-passenger-counts.apps.mta-dev-test.p8s0.p1.openshiftapps.com
   alerting:
     alertmanagers:
       - name: alertmanager-operated
