@@ -23,7 +23,7 @@ This example uses `amq-broker-simple` configuration.
 ```
 oc new-project amq-broker-simple
 oc apply -f amq-broker-simple/ -n amq-broker-simple
-oc apply -f amq-certificates/amq-broker-simple/ -n amq-certificates
+oc apply -f amq-certificates/broker-simple/ -n amq-certificates
 oc apply -f amq-broker-simple/customization/ -n amq-broker-simple
 ```
 
