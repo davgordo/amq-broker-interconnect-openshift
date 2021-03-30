@@ -12,6 +12,7 @@ In Operators|operatorHub, install 'Resource Locker Operator'. Resource Locker in
 
 ```
 oc new-project amq-certificates
+oc apply -f amq-certificates/operator/ -n amq-certificates
 oc apply -f amq-certificates/ -n amq-certificates
 oc apply -f amq-certificates/customization/ -n amq-certificates
 ```
@@ -22,6 +23,7 @@ This example uses `amq-broker-simple` configuration.
 
 ```
 oc new-project amq-broker-simple
+oc apply -f amq-broker-simple/operator/ -n amq-broker-simple
 oc apply -f amq-broker-simple/ -n amq-broker-simple
 oc apply -f amq-certificates/broker-simple/ -n amq-certificates
 oc apply -f amq-broker-simple/customization/ -n amq-broker-simple
@@ -33,6 +35,7 @@ This example uses `amq-router` configuration.
 
 ```
 oc new-project amq-router
+oc apply -f amq-router/operator/ -n amq-router
 oc apply -f amq-router/ -n amq-router
 oc apply -f amq-certificates/router/ -n amq-certificates
 ```
@@ -41,5 +44,6 @@ oc apply -f amq-certificates/router/ -n amq-certificates
 
 ```
 oc new-project amq-monitor
+oc apply -f amq-monitor/operator/ -n amq-monitor
 oc apply -f amq-monitor/ -n amq-monitor
 ```
