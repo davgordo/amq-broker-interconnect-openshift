@@ -5,8 +5,8 @@ metadata:
 spec:
   template:
     spec:
-      containers:
-        - name: broker-a-container
+      initContainers:
+        - name: broker-a-container-init
           env:
             - name: AMQ_ENABLE_METRICS_PLUGIN
               value: 'true'
