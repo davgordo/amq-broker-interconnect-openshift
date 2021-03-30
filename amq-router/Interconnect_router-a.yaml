@@ -52,6 +52,6 @@ spec:
       direction: out
       prefix: broker-simple.
       prefix: $coordinator
-    - connection: broker-a
+    - connection: broker-simple
       direction: out
       prefix: $coordinator
