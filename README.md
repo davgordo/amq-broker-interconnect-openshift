@@ -6,7 +6,7 @@
 oc apply -f openshift-operators/ -n openshift-operators
 ```
 
-## Provision AMQ Certificate Management
+## Provision Certificate Management
 
 ```
 oc new-project amq-certificates
