@@ -1,12 +1,10 @@
 # AMQ OpenShift Configuration
 
-## Install Certificate Manager Operator
+## Provision Global Operators
 
-In Operators|operatorHub, install 'cert-manager' community edition(not marketplace) Cert-manager may take a while to install. Wait for the operator to show in Operator|Installed Operators before proceeding.
-
-## Install Resource Locker Operator
-
-In Operators|operatorHub, install 'Resource Locker Operator'. Resource Locker installs in all namespace and may take a while to install. Wait for the operator to show in Operator|Installed Operators before proceeding.
+```
+oc apply -f openshift-operators/ -n openshift-operators
+```
 
 ## Provision AMQ Certificate Management
 
