@@ -29,9 +29,7 @@ oc apply -f amq-certificates/broker-simple/ -n amq-certificates
 oc apply -f amq-broker-simple/customization/ -n amq-broker-simple
 ```
 
-## Provision Routers
-
-This example uses `amq-router` configuration.
+## Provision Router
 
 ```
 oc new-project amq-router
