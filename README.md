@@ -39,12 +39,6 @@ oc apply -f amq-certificates/router/ -n amq-certificates
 
 ## Provision Monitoring Components
 
-In Operators|operatorHub, install 'Prometheus Operator' community edition(not marketplace) 
-Prometheus Operator may take a while to install. Wait for the operator to show in Operator|Installed Operators before proceeding.
-
-In Operators|operatorHub, install 'Grafana Operator' community edition(not marketplace) 
-Grafana Operator may take a while to install. Wait for the operator to show in Operator|Installed Operators before proceeding.
-
 ```
 oc new-project amq-monitor
 oc apply -f amq-monitor/ -n amq-monitor
