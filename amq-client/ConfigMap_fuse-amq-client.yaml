@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fuse-amq-client
+data:
+  application.properties: |-
+    logging.config=classpath:logback.xml
+    camel.springboot.name=FuseAMQClient
+
+    # actuator
+    management.address=0.0.0.0
+    management.server.port=8081
+    management.endpoints.enabled-by-default=true
+    management.endpoints.health.enabled=true
+
+    # amqp producer properties
+    amqp.producer.enabled=true
+    amqp.producer.uri=amqps://broker-a-artemis-0-svc.amq-broker-simple.svc.cluster.local:61617?transport.trustStoreLocation=/deployments/tls/broker-simple/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
+    amqp.producer.user=admin
+    amqp.producer.password=admin
+    amqp.producer.address=simple.amqp.test
+
+    # amqp consumer properties
+    amqp.consumer.enabled=true
+    amqp.consumer.uri=amqps://broker-a-artemis-0-svc.amq-broker-simple.svc.cluster.local:61617?transport.trustStoreLocation=/deployments/tls/broker-simple/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
+    amqp.consumer.user=admin
+    amqp.consumer.password=admin
+    amqp.consumer.address=simple.amqp.test

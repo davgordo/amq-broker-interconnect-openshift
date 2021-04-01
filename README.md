@@ -43,3 +43,11 @@ oc apply -f amq-certificates/customization/ -n amq-certificates
 oc apply -f amq-broker-simple/customization/ -n amq-broker-simple
 oc apply -f amq-monitor/ -n amq-monitor
 ```
+
+## Provision Fuse Client Application
+
+```
+oc new-project amq-client
+oc apply -f amq-client/ -n amq-client
+oc apply -f amq-certificates/client/ -n amq-certificates
+```

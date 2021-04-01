@@ -1,0 +1,53 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: fuse-amq-client
+  name: fuse-amq-client
+spec:
+  replicas: 1
+  selector:
+    app: fuse-amq-client
+  template:
+    metadata:
+      labels:
+        app: fuse-amq-client
+    spec:
+      containers:
+        - name: fuse-amq-client
+          image: ''
+          ports:
+            - containerPort: 8778
+              name: jolokia
+          readinessProbe:
+            httpGet:
+              path: actuator/health
+              port: 8081
+            initialDelaySeconds: 10
+          livenessProbe:
+            httpGet:
+              path: actuator/health
+              port: 8081
+            initialDelaySeconds: 180
+          volumeMounts:
+            - name: application-config
+              mountPath: /deployments/config
+            - name: broker-simple-tls
+              mountPath: /deployments/tls/broker-simple
+      volumes:
+        - name: application-config
+          configMap:
+            name: fuse-amq-client
+        - name: broker-simple-tls
+          secret:
+            secretName: broker-simple-tls
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - fuse-amq-client
+        from:
+          kind: ImageStreamTag
+          name: fuse-amq-client:latest
