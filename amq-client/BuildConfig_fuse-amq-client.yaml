@@ -14,7 +14,6 @@ spec:
     type: Git
     git:
       uri: https://github.com/rh-ei-stp/fuse-client-app
-      ref: fuse-7-8
   output:
     to:
       kind: ImageStreamTag
