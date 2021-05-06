@@ -8,7 +8,7 @@ spec:
     sourceStrategy:
       from:
         kind: ImageStreamTag
-        name: fuse7-java-openshift:1.8
+        name: fuse7-java-openshift:1.7
         namespace: openshift
   source:
     type: Git
