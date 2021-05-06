@@ -10,6 +10,9 @@ spec:
         kind: ImageStreamTag
         name: fuse7-java-openshift:1.7
         namespace: openshift
+      env:
+        - name: MAVEN_ARGS_APPEND
+          value: '-s configuration/settings.xml'
   source:
     type: Git
     git:
