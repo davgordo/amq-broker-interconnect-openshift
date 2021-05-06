@@ -38,6 +38,7 @@ spec:
   sslProfiles:
     - name: client-tls
       caCert: router-a-client-tls
+      credentials: router-a-client-tls
       generateCredentials: false
     - name: mesh-tls
       caCert: router-a-mesh-tls

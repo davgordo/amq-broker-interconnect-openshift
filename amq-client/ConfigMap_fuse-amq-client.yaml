@@ -13,16 +13,30 @@ data:
     management.endpoints.enabled-by-default=true
     management.endpoints.health.enabled=true
 
-    # amqp producer properties
+    # amqp producer properties for broker connection
     amqp.producer.enabled=true
-    amqp.producer.uri=amqps://broker-a-artemis-0-svc.amq-broker-simple.svc.cluster.local:61617?transport.trustStoreLocation=/deployments/tls/broker-simple/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
-    amqp.producer.user=admin
+    amqp.producer.uri=amqps://router-a.amq-router.svc.cluster.local:5672?transport.trustStoreLocation=/deployments/tls/router/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
+    amqp.producer.user=admin@router-a
     amqp.producer.password=admin
     amqp.producer.address=simple.amqp.test
 
-    # amqp consumer properties
+    # amqp consumer properties for broker connection
     amqp.consumer.enabled=true
-    amqp.consumer.uri=amqps://broker-a-artemis-0-svc.amq-broker-simple.svc.cluster.local:61617?transport.trustStoreLocation=/deployments/tls/broker-simple/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
-    amqp.consumer.user=admin
+    amqp.consumer.uri=amqps://router-a.amq-router.svc.cluster.local:5672?transport.trustStoreLocation=/deployments/tls/router/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
+    amqp.consumer.user=admin@router-a
     amqp.consumer.password=admin
     amqp.consumer.address=simple.amqp.test
+
+    # amqp producer properties for broker connection
+    #amqp.producer.enabled=true
+    #amqp.producer.user=admin
+    #amqp.producer.uri=amqps://broker-a-artemis-0-svc.amq-broker-simple.svc.cluster.local:61617?transport.trustStoreLocation=/deployments/tls/broker-simple/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
+    #amqp.producer.password=admin
+    #amqp.producer.address=simple.amqp.test
+
+    # amqp consumer properties for broker connection
+    #amqp.consumer.enabled=true
+    #amqp.consumer.uri=amqps://broker-a-artemis-0-svc.amq-broker-simple.svc.cluster.local:61617?transport.trustStoreLocation=/deployments/tls/broker-simple/truststore.jks&transport.trustStorePassword=changeit&transport.verifyHost=false
+    #amqp.consumer.user=admin
+    #amqp.consumer.password=admin
+    #amqp.consumer.address=simple.amqp.test
