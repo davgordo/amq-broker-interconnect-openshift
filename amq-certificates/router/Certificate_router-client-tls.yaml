@@ -7,8 +7,14 @@ spec:
   issuerRef:
     name: ca-issuer
   commonName: router-client-tls
+  subject: 
+    countries:
+      - US
+    organizationalUnits:
+      - RedHat
   usages:
     - server auth
+    - client auth
   dnsNames:
   - router-a
   - router-a.amq-router.svc

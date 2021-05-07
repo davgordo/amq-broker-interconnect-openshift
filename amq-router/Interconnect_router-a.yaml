@@ -47,18 +47,20 @@ spec:
       generateCredentials: false
     - name: broker-tls
       caCert: router-a-broker-tls
+      credentials: router-a-broker-tls
+      mutualAuth: true
       generateCredentials: false
   users: router-a-users
   linkRoutes:
     - connection: broker-simple
       direction: in
-      prefix: broker-simple.
+      prefix: simple.
     - connection: broker-simple
       direction: in
       prefix: $coordinator
     - connection: broker-simple
       direction: out
-      prefix: broker-simple.
+      prefix: simple.
     - connection: broker-simple
       direction: out
       prefix: $coordinator

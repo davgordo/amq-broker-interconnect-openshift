@@ -15,6 +15,7 @@ spec:
       port: 5672
       sslEnabled: true
       sslSecret: broker-a-router-jks
+      needClientAuth: true
   adminUser:  admin
   adminPassword: admin
   console:
@@ -25,4 +26,4 @@ spec:
     journalType: aio
     persistenceEnabled: true
     messageMigration: true
-    requireLogin: true
+    requireLogin: false
