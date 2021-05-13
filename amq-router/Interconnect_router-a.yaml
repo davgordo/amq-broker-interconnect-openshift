@@ -46,8 +46,8 @@ spec:
       mutualAuth: true
       generateCredentials: false
     - name: broker-tls
-      caCert: router-a-broker-tls
-      credentials: router-a-broker-tls
+      caCert: router-a-client-tls
+      credentials: router-a-client-tls
       mutualAuth: true
       generateCredentials: false
   users: router-a-users
