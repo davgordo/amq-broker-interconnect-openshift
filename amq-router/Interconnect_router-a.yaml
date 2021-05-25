@@ -7,6 +7,22 @@ spec:
     placement: Any
     role: interior
     size: 1
+  users: router-a-users
+  sslProfiles:
+    - name: client-tls
+      caCert: router-a-client-tls
+      credentials: router-a-client-tls
+      generateCredentials: false
+    - name: mesh-tls
+      caCert: router-a-mesh-tls
+      credentials: router-a-mesh-tls
+      mutualAuth: true
+      generateCredentials: false
+    - name: broker-tls
+      caCert: router-a-broker-tls
+      credentials: router-a-broker-tls
+      mutualAuth: true
+      generateCredentials: false
   edgeListeners:
     - port: 45672
   interRouterListeners:
@@ -35,22 +51,21 @@ spec:
       port: 5672
       routeContainer: true
       sslProfile: broker-tls
-  sslProfiles:
-    - name: client-tls
-      caCert: router-a-client-tls
-      credentials: router-a-client-tls
-      generateCredentials: false
-    - name: mesh-tls
-      caCert: router-a-mesh-tls
-      credentials: router-a-mesh-tls
-      mutualAuth: true
-      generateCredentials: false
-    - name: broker-tls
-      caCert: router-a-broker-tls
-      credentials: router-a-broker-tls
-      mutualAuth: true
-      generateCredentials: false
-  users: router-a-users
+    - host: broker-a-ss-0.broker-a-hdls-svc.amq-broker-sharded.svc.cluster.local
+      name: broker-sharded-0
+      port: 5672
+      routeContainer: true
+      sslProfile: broker-tls
+    - host: broker-a-ss-1.broker-a-hdls-svc.amq-broker-sharded.svc.cluster.local
+      name: broker-sharded-1
+      port: 5672
+      routeContainer: true
+      sslProfile: broker-tls
+    - host: broker-a-ss-2.broker-a-hdls-svc.amq-broker-sharded.svc.cluster.local
+      name: broker-sharded-2
+      port: 5672
+      routeContainer: true
+      sslProfile: broker-tls
   linkRoutes:
     - connection: broker-simple
       direction: in
@@ -64,3 +79,25 @@ spec:
     - connection: broker-simple
       direction: out
       prefix: $coordinator
+  addresses:
+    - prefix: sharded.test
+      waypoint: true
+  autoLinks:
+    - address: sharded.test
+      connection: broker-sharded-0
+      direction: in
+    - address: sharded.test
+      connection: broker-sharded-0
+      direction: out
+    - address: sharded.test
+      connection: broker-sharded-1
+      direction: in
+    - address: sharded.test
+      connection: broker-sharded-1
+      direction: out
+    - address: sharded.test
+      connection: broker-sharded-2
+      direction: in
+    - address: sharded.test
+      connection: broker-sharded-2
+      direction: out
