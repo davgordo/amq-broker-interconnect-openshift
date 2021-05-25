@@ -1,0 +1,14 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: broker-a-ss
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: broker-a-container-init
+          env:
+            - name: AMQ_ENABLE_METRICS_PLUGIN
+              value: 'true'
+            - name: AMQ_CLUSTERED
+              value: 'false'
