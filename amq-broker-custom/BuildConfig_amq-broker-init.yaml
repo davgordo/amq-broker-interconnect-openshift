@@ -22,4 +22,4 @@ spec:
         kind: DockerImage
         name: registry.redhat.io/amq7/amq-broker-init-rhel8:0.4
   triggers:
-  - type: ConfigChange
+    - type: ConfigChange

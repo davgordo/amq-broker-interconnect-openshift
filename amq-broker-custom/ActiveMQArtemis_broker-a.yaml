@@ -8,14 +8,7 @@ spec:
       expose: true
       protocols: 'amqp,core,stomp'
       port: 61617
-      sslEnabled: true
-      sslSecret: broker-a-jks
-    - name: router
-      protocols: amqp
-      port: 5672
-      sslEnabled: true
-      sslSecret: broker-a-router-jks
-      needClientAuth: true
+      sslEnabled: false
   adminUser:  admin
   adminPassword: admin
   console:
@@ -25,7 +18,6 @@ spec:
     image: placeholder
     journalType: aio
     persistenceEnabled: true
-    messageMigration: true
     requireLogin: false
     enableMetricsPlugin: true
     clustered: false
