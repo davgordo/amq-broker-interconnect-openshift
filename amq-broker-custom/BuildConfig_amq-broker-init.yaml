@@ -1,0 +1,25 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: amq-broker-init
+  name: amq-broker-init
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: amq-broker-init:v0.1
+  source:
+    contextDir: amq-broker-custom/init-image
+    git:
+      ref: custom-init
+      uri: https://github.com/davgordo/amq-broker-interconnect-openshift
+    type: Git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: registry.redhat.io/amq7/amq-broker-init-rhel8:0.4
+  triggers:
+    - type: ConfigChange
