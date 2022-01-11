@@ -1,0 +1,9 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    build: amq-broker-init
+  name: amq-broker-init
+spec:
+  lookupPolicy:
+    local: false
