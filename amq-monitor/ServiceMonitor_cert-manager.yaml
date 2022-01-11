@@ -5,11 +5,11 @@ metadata:
 spec:
   endpoints:
     - interval: 5s
-      port: http
+      port: tcp-prometheus-servicemonitor
       scheme: http
   namespaceSelector:
     matchNames:
-      - amq-certificates
+      - openshift-operators
   selector:
     matchLabels:
       app: cert-manager

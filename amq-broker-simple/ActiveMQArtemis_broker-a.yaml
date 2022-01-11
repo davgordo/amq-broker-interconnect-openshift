@@ -1,4 +1,4 @@
-apiVersion: broker.amq.io/v2alpha2
+apiVersion: broker.amq.io/v2alpha5
 kind: ActiveMQArtemis
 metadata:
   name: broker-a
@@ -22,8 +22,10 @@ spec:
     expose: true
   deploymentPlan:
     size: 1
-    image: registry.redhat.io/amq7/amq-broker:7.8
+    image: placeholder
     journalType: aio
     persistenceEnabled: true
     messageMigration: true
     requireLogin: false
+    enableMetricsPlugin: true
+    clustered: false

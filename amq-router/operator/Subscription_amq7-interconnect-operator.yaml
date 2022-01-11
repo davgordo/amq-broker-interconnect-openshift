@@ -3,9 +3,9 @@ kind: Subscription
 metadata:
   name: amq7-interconnect-operator
 spec:
-  channel: 1.2.0
-  installPlanApproval: Automatic
+  channel: 1.10.x
+  installPlanApproval: Manual
   name: amq7-interconnect-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: amq7-interconnect-operator.v1.2.3
+  startingCSV: amq7-interconnect-operator.v1.10.4

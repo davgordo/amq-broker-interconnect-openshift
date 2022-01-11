@@ -3,8 +3,9 @@ kind: Subscription
 metadata:
   name: amq-broker
 spec:
-  channel: current
-  installPlanApproval: Automatic
-  name: amq-broker
+  channel: 7.x
+  installPlanApproval: Manual
+  name: amq-broker-rhel8
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: amq-broker-operator.v7.9.1-opr-2

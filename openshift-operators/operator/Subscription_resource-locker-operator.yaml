@@ -4,8 +4,8 @@ metadata:
   name: resource-locker-operator
 spec:
   channel: alpha
-  installPlanApproval: Automatic
+  installPlanApproval: Manual
   name: resource-locker-operator
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: resource-locker-operator.v1.0.4
+  startingCSV: resource-locker-operator.v1.1.3

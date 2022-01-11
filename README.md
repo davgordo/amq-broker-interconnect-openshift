@@ -24,7 +24,6 @@ oc apply -f amq-certificates/broker-simple/ -n amq-certificates
 oc new-project amq-broker-simple
 oc apply -f amq-broker-simple/operator/ -n amq-broker-simple
 oc apply -f amq-broker-simple/ -n amq-broker-simple
-oc apply -f amq-broker-simple/customization/ -n amq-broker-simple
 ```
 
 ## Provision Router
