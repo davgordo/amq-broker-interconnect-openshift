@@ -10,6 +10,7 @@ This repository includes demonstrations of various AMQP messaging scenarios and 
 - Message routing using Auto Links for broker sharding
 - Message producer and consumer configuration
 - Broker and router metrics monitoring using Prometheus and charting using Grafana
+- Custom init image for advanced broker configuration
 
 ## Provisioning Instructions
 
