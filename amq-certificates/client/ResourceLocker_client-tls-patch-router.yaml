@@ -7,17 +7,17 @@ spec:
     name: default
   patches:
   - id: client-tls-patch-router
-    targetObjectRef:
-      apiVersion: v1
-      kind: Secret
-      name: router-client-tls
-      namespace: amq-client
-    patchTemplate: |
-      data:
-        truststore.jks: {{ (index (index . 0).data "truststore.jks") }}
-    patchType: application/strategic-merge-patch+json
     sourceObjectRefs:
     - apiVersion: v1
       kind: Secret
       name: router-client-tls
       namespace: amq-certificates
+    targetObjectRef:
+      apiVersion: v1
+      kind: Secret
+      name: router-client-tls
+      namespace: amq-client
+    patchType: application/strategic-merge-patch+json
+    patchTemplate: |
+      data:
+        truststore.jks: {{ (index (index . 0).data "truststore.jks") }}

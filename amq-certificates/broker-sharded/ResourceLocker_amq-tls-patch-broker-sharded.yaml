@@ -7,18 +7,18 @@ spec:
     name: default
   patches:
   - id: amq-tls-patch-broker-sharded
-    targetObjectRef:
-      apiVersion: v1
-      kind: Secret
-      name: broker-a-jks
-      namespace: amq-broker-sharded
-    patchTemplate: |
-      data:
-        broker.ks: {{ (index (index . 0).data "keystore.jks") }}
-        client.ts: {{ (index (index . 0).data "truststore.jks") }}
-    patchType: application/strategic-merge-patch+json
     sourceObjectRefs:
     - apiVersion: v1
       kind: Secret
       name: broker-sharded-tls
       namespace: amq-certificates
+    targetObjectRef:
+      apiVersion: v1
+      kind: Secret
+      name: broker-a-jks
+      namespace: amq-broker-sharded
+    patchType: application/strategic-merge-patch+json
+    patchTemplate: |
+      data:
+        broker.ks: {{ (index (index . 0).data "keystore.jks") }}
+        client.ts: {{ (index (index . 0).data "truststore.jks") }}
