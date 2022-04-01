@@ -117,7 +117,6 @@ oc apply -f amq-router/ -n amq-router
 Provision the example AMQP producer and consumer application.
 
 ```
-oc apply -f amq-certificates/client/ -n amq-certificates
 oc new-project amq-client
 oc apply -f amq-client/ -n amq-client
 ```
