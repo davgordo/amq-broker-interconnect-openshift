@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: router-listener-tls
+spec:
+  secretName: router-listener-tls
+  issuerRef:
+    name: ca-issuer
+    kind: ClusterIssuer
+  commonName: router-listener
+  subject:
+    countries:
+      - US
+    organizationalUnits:
+      - RedHat
+  usages:
+    - server auth
+  dnsNames:
+  - router
+  - router.amq-router.svc
+  - router.amq-router.svc.cluster.local

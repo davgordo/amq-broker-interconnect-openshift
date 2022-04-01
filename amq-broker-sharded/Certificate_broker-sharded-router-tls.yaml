@@ -1,16 +1,17 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: broker-sharded-tls
+  name: broker-sharded-router-tls
 spec:
-  secretName: broker-sharded-tls
+  secretName: broker-sharded-router-tls
   issuerRef:
     name: ca-issuer
-  commonName: broker-a-hdls-svc.amq-broker-sharded.svc
+    kind: ClusterIssuer
+  commonName: broker-a-hdls-svc
   usages:
     - server auth
   dnsNames:
-  - broker-a-hdls-svc 
+  - broker-a-hdls-svc
   - broker-a-hdls-svc.amq-broker-sharded.svc
   - broker-a-hdls-svc.amq-broker-sharded.svc.cluster.local
   keyEncoding: pkcs8
@@ -18,5 +19,5 @@ spec:
     jks:
       create: true
       passwordSecretRef:
-        name: broker-sharded-tls
+        name: broker-sharded-router-tls
         key: keyStorePassword

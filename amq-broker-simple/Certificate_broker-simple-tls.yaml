@@ -6,11 +6,12 @@ spec:
   secretName: broker-simple-tls
   issuerRef:
     name: ca-issuer
+    kind: ClusterIssuer
   commonName: broker-a-hdls-svc.amq-broker-simple.svc
   usages:
     - server auth
   dnsNames:
-  - broker-a-hdls-svc 
+  - broker-a-hdls-svc
   - broker-a-hdls-svc.amq-broker-simple.svc
   - broker-a-hdls-svc.amq-broker-simple.svc.cluster.local
   keyEncoding: pkcs8

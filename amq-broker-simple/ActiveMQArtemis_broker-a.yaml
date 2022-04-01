@@ -9,12 +9,12 @@ spec:
       protocols: 'amqp,core,stomp'
       port: 61617
       sslEnabled: true
-      sslSecret: broker-a-jks
+      sslSecret: broker-simple-tls
     - name: router
       protocols: amqp
       port: 5672
       sslEnabled: true
-      sslSecret: broker-a-router-jks
+      sslSecret: broker-simple-router-tls
       needClientAuth: true
   adminUser:  admin
   adminPassword: admin

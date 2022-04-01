@@ -6,11 +6,17 @@ spec:
   secretName: router-mesh-tls
   issuerRef:
     name: ca-issuer
-  commonName: router-a
+    kind: ClusterIssuer
+  commonName: router-mesh
+  subject:
+    countries:
+      - US
+    organizationalUnits:
+      - RedHat
   usages:
     - server auth
     - client auth
   dnsNames:
-  - router-a
-  - router-a.amq-router.svc
-  - router-a.amq-router.svc.cluster.local
+  - router
+  - router.amq-router.svc
+  - router.amq-router.svc.cluster.local

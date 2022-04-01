@@ -32,20 +32,15 @@ spec:
           volumeMounts:
             - name: application-config
               mountPath: /deployments/config
-            - name: broker-simple-tls
-              mountPath: /deployments/tls/broker-simple
-            - name: router-client-tls
-              mountPath: /deployments/tls/router
+            - name: amq-tls
+              mountPath: /deployments/tls/amq
       volumes:
         - name: application-config
           configMap:
             name: fuse-amq-client
-        - name: broker-simple-tls
+        - name: amq-tls
           secret:
-            secretName: broker-simple-tls
-        - name: router-client-tls
-          secret:
-            secretName: router-client-tls
+            secretName: amq-tls
   triggers:
     - type: ConfigChange
     - type: ImageChange
