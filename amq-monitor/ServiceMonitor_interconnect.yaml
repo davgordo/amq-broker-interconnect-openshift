@@ -12,5 +12,5 @@ spec:
       - amq-router
   selector:
     matchLabels:
-      application: router-a
-      interconnect_cr: router-a
+      application: router
+      interconnect_cr: router

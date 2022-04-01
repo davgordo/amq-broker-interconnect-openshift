@@ -1,0 +1,22 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: router-connector-tls
+spec:
+  secretName: router-connector-tls
+  issuerRef:
+    name: ca-issuer
+    kind: ClusterIssuer
+  commonName: router-connector
+  subject:
+    countries:
+      - US
+    organizationalUnits:
+      - RedHat
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - router
+  - router.amq-router.svc
+  - router.amq-router.svc.cluster.local

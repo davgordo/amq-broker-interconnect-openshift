@@ -1,26 +1,26 @@
 apiVersion: interconnectedcloud.github.io/v1alpha1
 kind: Interconnect
 metadata:
-  name: router-a
+  name: router
 spec:
   deploymentPlan:
     placement: Any
     role: interior
     size: 1
-  users: router-a-users
+  users: router-users
   sslProfiles:
-    - name: client-tls
-      caCert: router-a-client-tls
-      credentials: router-a-client-tls
+    - name: listener-tls
+      caCert: router-listener-tls
+      credentials: router-listener-tls
       generateCredentials: false
     - name: mesh-tls
-      caCert: router-a-mesh-tls
-      credentials: router-a-mesh-tls
+      caCert: router-mesh-tls
+      credentials: router-mesh-tls
       mutualAuth: true
       generateCredentials: false
-    - name: broker-tls
-      caCert: router-a-broker-tls
-      credentials: router-a-broker-tls
+    - name: connector-tls
+      caCert: router-connector-tls
+      credentials: router-connector-tls
       mutualAuth: true
       generateCredentials: false
   edgeListeners:
@@ -37,7 +37,7 @@ spec:
       expose: true
       http: true
     - port: 5672
-      sslProfile: client-tls
+      sslProfile: listener-tls
       authenticatePeer: true
       saslMechanisms: PLAIN
       expose: true
@@ -50,22 +50,22 @@ spec:
       name: broker-simple
       port: 5672
       routeContainer: true
-      sslProfile: broker-tls
+      sslProfile: connector-tls
     - host: broker-a-ss-0.broker-a-hdls-svc.amq-broker-sharded.svc.cluster.local
       name: broker-sharded-0
       port: 5672
       routeContainer: true
-      sslProfile: broker-tls
+      sslProfile: connector-tls
     - host: broker-a-ss-1.broker-a-hdls-svc.amq-broker-sharded.svc.cluster.local
       name: broker-sharded-1
       port: 5672
       routeContainer: true
-      sslProfile: broker-tls
+      sslProfile: connector-tls
     - host: broker-a-ss-2.broker-a-hdls-svc.amq-broker-sharded.svc.cluster.local
       name: broker-sharded-2
       port: 5672
       routeContainer: true
-      sslProfile: broker-tls
+      sslProfile: connector-tls
   linkRoutes:
     - connection: broker-simple
       direction: in
