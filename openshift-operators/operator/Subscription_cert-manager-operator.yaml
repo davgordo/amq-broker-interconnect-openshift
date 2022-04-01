@@ -4,7 +4,7 @@ metadata:
   name: cert-manager-operator
 spec:
   channel: stable
-  installPlanApproval: Manual
+  installPlanApproval: Automatic
   name: cert-manager
   source: community-operators
   sourceNamespace: openshift-marketplace

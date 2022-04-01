@@ -4,7 +4,7 @@ metadata:
   name: amq7-interconnect-operator
 spec:
   channel: 1.10.x
-  installPlanApproval: Manual
+  installPlanApproval: Automatic
   name: amq7-interconnect-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
