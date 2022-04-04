@@ -12,7 +12,7 @@ spec:
   source:
     contextDir: amq-broker-custom/init-image
     git:
-      ref: custom-init
+      ref: main
       uri: https://github.com/davgordo/amq-broker-interconnect-openshift
     type: Git
   strategy:
